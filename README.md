@@ -20,6 +20,7 @@
 
 ## Installation
 
-1. Clone the repository:
+### 1. Clone the repository:
    ```bash
-   git clone https://github.com/0xZahidp/GhuraFira.git
+   git clone https://github.com/0xZahidp/GhuraFira_Mobile_APP_Flutter.git
+   ```
