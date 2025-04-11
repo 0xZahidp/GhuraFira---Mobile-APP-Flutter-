@@ -1,111 +1,205 @@
 import 'package:flutter/material.dart';
-import 'bookings.dart';
 import 'flight.dart';
 import 'hotel.dart';
-import 'inbox.dart';
-import 'offers.dart';
-import 'profile.dart';
 import 'tour.dart';
 import 'visa.dart';
+import 'giftcard.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-
-  static List<Widget> _widgetOptions = <Widget>[
-    HomepageContent(),
-    BookingsPage(),
-    OffersPage(),
-    InboxPage(),
-    ProfilePage(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Text('Hello, Traveler'),
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () => Scaffold.of(context).openDrawer(),
+            // Main Services Section
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Services',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildServiceButton(
+                        context,
+                        icon: Icons.flight,
+                        label: 'Flight',
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => FlightPage()),
+                        ),
+                      ),
+                      _buildServiceButton(
+                        context,
+                        icon: Icons.hotel,
+                        label: 'Hotel',
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HotelPage()),
+                        ),
+                      ),
+                      _buildServiceButton(
+                        context,
+                        icon: Icons.tour,
+                        label: 'Tour',
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => TourPage()),
+                        ),
+                      ),
+                      _buildServiceButton(
+                        context,
+                        icon: Icons.credit_card,
+                        label: 'Visa',
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => VisaPage()),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            SizedBox(width: 10),
-            Text('Hello, Traveler'),
+
+            // Divider
+            Divider(thickness: 8, color: Colors.grey.shade200),
+
+            // Gift Card Section
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ListTile(
+                    leading: const Icon(Icons.card_giftcard, color: Colors.blue),
+                    title: const Text(
+                      'Gift Card',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => GiftCardPage()),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Divider
+            Divider(thickness: 8, color: Colors.grey.shade200),
+
+            // Hot Deals Section
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Hot Deals',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text('See All'),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    height: 200,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        _buildDealCard(
+                          'Up to 18% Discount',
+                          'Special offers on flights',
+                          Icons.flight,
+                          Colors.blue,
+                        ),
+                        const SizedBox(width: 16),
+                        _buildDealCard(
+                          'Up to 11% Off',
+                          'Hotel booking discounts',
+                          Icons.hotel,
+                          Colors.green,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Trending Section
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Trending',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _buildTrendingOption(
+                          'Flight',
+                          Icons.flight,
+                          Colors.blue,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: _buildTrendingOption(
+                          'Hotel',
+                          Icons.hotel,
+                          Colors.green,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.flight),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => FlightPage()),
-            ),
-          ),
-          IconButton(
-            icon: Icon(Icons.hotel),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HotelPage()),
-            ),
-          ),
-          IconButton(
-            icon: Icon(Icons.tour),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TourPage()),
-            ),
-          ),
-          IconButton(
-            icon: Icon(Icons.card_travel),  // Changed to an available icon
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => VisaPage()),
-            ),
-          ),
-        ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            ListTile(
-              title: Text('My Bookings'),
-              onTap: () => Navigator.pushNamed(context, '/bookings'),
-            ),
-            ListTile(
-              title: Text('Support'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text('Rate Us'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text('Saved'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text('Log out'),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
-      body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        items: const <BottomNavigationBarItem>[
+        type: BottomNavigationBarType.fixed,
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -123,79 +217,90 @@ class _HomePageState extends State<HomePage> {
             label: 'Inbox',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
+            icon: Icon(Icons.person),
             label: 'Profile',
           ),
         ],
       ),
     );
   }
-}
 
-class HomepageContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Stack(
-        children: <Widget>[
-          // Background image
-          Image.asset(
-            'assets/images/cover.png',  // Your image path
-            width: double.infinity,
-            height: 250,  // Adjust as needed
-            fit: BoxFit.cover,
+  Widget _buildServiceButton(
+    BuildContext context, {
+    required IconData icon,
+    required String label,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+              color: Colors.blue.shade50,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(icon, size: 30, color: Colors.blue),
           ),
-          
-          // Positioned header buttons over the image
-          Positioned(
-            top: 40,  // Adjust top position
-            left: 20,  // Adjust left position
-            child: Row(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.flight, color: Colors.white),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  icon: Icon(Icons.hotel, color: Colors.white),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  icon: Icon(Icons.tour, color: Colors.white),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  icon: Icon(Icons.card_travel, color: Colors.white),  // Changed to an available icon
-                  onPressed: () {},
-                ),
-              ],
+          const SizedBox(height: 8),
+          Text(label),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDealCard(String title, String subtitle, IconData icon, Color color) {
+    return Container(
+      width: 180,
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: color.withOpacity(0.3)),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, size: 40, color: color),
+          const SizedBox(height: 16),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: color,
             ),
           ),
-          
-          // Rest of the content
-          Padding(
-            padding: const EdgeInsets.only(top: 270),  // Adjust padding to avoid overlap
-            child: Column(
-              children: <Widget>[
-                Container(
-                  height: 200,
-                  color: Colors.blueGrey,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      Card(child: Padding(padding: EdgeInsets.all(8), child: Text("Item 1"))),
-                      Card(child: Padding(padding: EdgeInsets.all(8), child: Text("Item 2"))),
-                      Card(child: Padding(padding: EdgeInsets.all(8), child: Text("Item 3"))),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 400,
-                  child: Center(
-                    child: Text("Scrollable content goes here"),
-                  ),
-                ),
-              ],
+          const SizedBox(height: 8),
+          Text(
+            subtitle,
+            style: TextStyle(color: Colors.grey.shade600),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTrendingOption(String title, IconData icon, Color color) {
+    return Container(
+      height: 100,
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        children: [
+          Icon(icon, size: 30, color: color),
+          const SizedBox(width: 16),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: color,
             ),
           ),
         ],
