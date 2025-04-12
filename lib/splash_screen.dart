@@ -23,12 +23,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFF24EDE6), // Custom background color
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/logo.png', height: 100), // Replace with your logo
+            Image.asset('assets/images/logo.png', height: 100), // Logo
             const SizedBox(height: 20),
             const Text(
               'GhuraFira',
@@ -40,11 +40,15 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Your journey starts here',
+              'Your travel starts here',
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.grey,
+                color: Colors.black87,
               ),
+            ),
+            const SizedBox(height: 30),
+            const CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
             ),
           ],
         ),

@@ -6,6 +6,8 @@ import 'visa.dart';
 import 'giftcard.dart';
 import 'FlightBookingPage.dart';
 import 'hotel_booking_page.dart';
+import 'bookings.dart';
+import 'support.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -18,6 +20,7 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
+      drawer: _buildDrawer(context),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,8 +68,7 @@ class HomePage extends StatelessWidget {
                         label: 'Tour',
                         onTap: () => Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => TourPackagePage()),
+                          MaterialPageRoute(builder: (context) => TourPackagePage()),
                         ),
                       ),
                       _buildServiceButton(
@@ -205,6 +207,26 @@ class HomePage extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        currentIndex: 0, // This will highlight the Home icon
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Navigator.pushNamed(context, '/');
+              break;
+            case 1:
+              Navigator.pushNamed(context, '/bookings');
+              break;
+            case 2:
+              Navigator.pushNamed(context, '/offers');
+              break;
+            case 3:
+              Navigator.pushNamed(context, '/inbox');
+              break;
+            case 4:
+              Navigator.pushNamed(context, '/profile');
+              break;
+          }
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -225,6 +247,77 @@ class HomePage extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDrawer(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue.shade50,
+            ),
+            child: const Text(
+              'Hi there!',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.book),
+            title: const Text('My Bookings'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/bookings');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.support),
+            title: const Text('Support'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/support');
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.flight),
+            title: const Text('Flight'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/flight');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.hotel),
+            title: const Text('Hotel'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/hotel');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.credit_card),
+            title: const Text('Visa'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/visa');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.tour),
+            title: const Text('Tour'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/tour');
+            },
           ),
         ],
       ),

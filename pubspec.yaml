@@ -56,6 +56,12 @@ flutter:
     - assets/images/img_5.png
     - assets/images/img_6.png
     - assets/images/img_7.png
+    - assets/images/offer1.jpeg
+    - assets/images/offer2.png
+    - assets/images/offer3.jpeg
+    - assets/images/offer4.png
+    - assets/images/offer5.jpeg
+    - assets/images/offer6.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
