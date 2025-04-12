@@ -65,7 +65,8 @@ class HomePage extends StatelessWidget {
                         label: 'Tour',
                         onTap: () => Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => TourPage()),
+                          MaterialPageRoute(
+                              builder: (context) => TourPackagePage()),
                         ),
                       ),
                       _buildServiceButton(
