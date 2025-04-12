@@ -1,4 +1,5 @@
 // this is hotel booking page
+// this is version 2.0
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'HotelSearchResultsPage.dart';
