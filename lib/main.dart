@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'bookings.dart';
-import 'flight.dart';
 import 'giftcard.dart';
 import 'homepage.dart';
 import 'hotel.dart';
@@ -14,7 +13,6 @@ import 'support.dart';
 import 'tour.dart';
 import 'visa.dart';
 import 'FlightBookingPage.dart';
-import 'hotel_booking_page.dart';
 
 void main() {
   runApp(const MyApp());

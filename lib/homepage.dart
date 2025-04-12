@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'flight.dart';
 import 'hotel.dart';
 import 'tour.dart';
 import 'visa.dart';
 import 'giftcard.dart';
 import 'FlightBookingPage.dart';
-import 'hotel_booking_page.dart';
-import 'bookings.dart';
-import 'support.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -68,7 +64,8 @@ class HomePage extends StatelessWidget {
                         label: 'Tour',
                         onTap: () => Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => TourPackagePage()),
+                          MaterialPageRoute(
+                              builder: (context) => TourPackagePage()),
                         ),
                       ),
                       _buildServiceButton(
