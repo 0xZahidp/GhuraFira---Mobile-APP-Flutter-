@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'homepage.dart';
-import 'offers.dart';
-import 'inbox.dart';
-import 'profile.dart';
-import 'hotel_booking_page.dart'; // Import your HotelBookingPage
+import 'HotelBookingPage.dart';
 
 class BookingsPage extends StatefulWidget {
   const BookingsPage({super.key});
@@ -58,7 +54,7 @@ class _BookingsPageState extends State<BookingsPage> {
               ],
             ),
           ),
-          
+
           // Empty State
           Expanded(
             child: Center(
@@ -177,7 +173,8 @@ class _BookingsPageState extends State<BookingsPage> {
             text,
             style: TextStyle(
               fontSize: 16,
-              fontWeight: _selectedTab == index ? FontWeight.bold : FontWeight.normal,
+              fontWeight:
+                  _selectedTab == index ? FontWeight.bold : FontWeight.normal,
               color: _selectedTab == index ? Colors.blue : Colors.grey,
             ),
           ),
