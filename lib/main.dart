@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => ProfilePage(),
         '/signup': (context) => SignupPage(),
         '/support': (context) => SupportPage(),
-        '/tour': (context) => TourPage(),
+        '/tour': (context) => TourPackagePage(),
         '/visa': (context) => VisaPage(),
       },
     );
