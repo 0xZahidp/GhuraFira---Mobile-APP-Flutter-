@@ -13,6 +13,8 @@ import 'splash_screen.dart';
 import 'support.dart';
 import 'tour.dart';
 import 'visa.dart';
+import 'FlightBookingPage.dart';
+import 'hotel_booking_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,9 +37,9 @@ class MyApp extends StatelessWidget {
         '/splash': (context) => const SplashScreen(),
         '/': (context) => HomePage(),
         '/bookings': (context) => BookingsPage(),
-        '/flight': (context) => FlightPage(),
+        '/flight': (context) => FlightBookingPage(),
         '/giftcard': (context) => GiftCardPage(),
-        '/hotel': (context) => HotelPage(),
+        '/hotel': (context) => HotelBookingPage(),
         '/inbox': (context) => InboxPage(),
         '/login': (context) => LoginPage(),
         '/offers': (context) => OffersPage(),

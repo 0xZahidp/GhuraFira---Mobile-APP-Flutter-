@@ -4,6 +4,8 @@ import 'hotel.dart';
 import 'tour.dart';
 import 'visa.dart';
 import 'giftcard.dart';
+import 'FlightBookingPage.dart';
+import 'hotel_booking_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -43,7 +45,8 @@ class HomePage extends StatelessWidget {
                         label: 'Flight',
                         onTap: () => Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => FlightPage()),
+                          MaterialPageRoute(
+                              builder: (context) => FlightBookingPage()),
                         ),
                       ),
                       _buildServiceButton(
@@ -52,7 +55,8 @@ class HomePage extends StatelessWidget {
                         label: 'Hotel',
                         onTap: () => Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => HotelPage()),
+                          MaterialPageRoute(
+                              builder: (context) => HotelBookingPage()),
                         ),
                       ),
                       _buildServiceButton(
@@ -89,7 +93,8 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ListTile(
-                    leading: const Icon(Icons.card_giftcard, color: Colors.blue),
+                    leading:
+                        const Icon(Icons.card_giftcard, color: Colors.blue),
                     title: const Text(
                       'Gift Card',
                       style: TextStyle(
@@ -251,7 +256,8 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildDealCard(String title, String subtitle, IconData icon, Color color) {
+  Widget _buildDealCard(
+      String title, String subtitle, IconData icon, Color color) {
     return Container(
       width: 180,
       decoration: BoxDecoration(
