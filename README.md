@@ -18,6 +18,12 @@
 - **Firebase**: Optional backend for authentication and database management.
 - **Google Maps API**: Optional integration for location services.
 
+## Figma
+```
+[Figma Project Preview](https://embed.figma.com/design/vKmWTXL8dyhqUzZB1pWY6H/Ghurafira-APP?node-id=0-1&embed-host=share)
+```
+
+
 ## Installation
 
 ### 1. Clone the repository:
