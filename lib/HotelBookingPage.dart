@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'hotel.dart';
-import 'HotelResultPage.dart';
 import 'HotelSearchResultsPage.dart';
 
 class HotelBookingPage extends StatefulWidget {
