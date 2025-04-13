@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 
 class HotelResultsPage extends StatelessWidget {
-  const HotelResultsPage({super.key});
+  final String fromCity;
+  const HotelResultsPage({required this.fromCity});
 
   @override
   Widget build(BuildContext context) {
@@ -95,10 +96,10 @@ class HotelResultsPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Column(
+               Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Cox's Bazar",
+                    Text(fromCity,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
