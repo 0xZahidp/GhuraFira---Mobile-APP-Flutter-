@@ -74,34 +74,40 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 30),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     // Google sign in logic
-              //     Navigator.pushReplacement(
-              //       context,
-              //       MaterialPageRoute(builder: (context) => HomePage()),
-              //     );
-              //   },
-              //   style: ElevatedButton.styleFrom(
-              //     backgroundColor: Colors.white,
-              //     foregroundColor: Colors.black,
-              //     minimumSize: const Size(double.infinity, 50),
-              //     shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(8),
-              //       side: const BorderSide(color: Colors.grey),
-              //     ),
-              //   ),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-
-              //     ],
-              //   ),
-              // ),
-              SignInButton(
-                Buttons.google,
-                text: 'Continue with Google',
-                onPressed: _handleGoogleSignIn,
+              ElevatedButton(
+                onPressed: () {
+                  // Google sign in logic
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
+                  minimumSize: const Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    side: const BorderSide(color: Colors.grey),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.g_mobiledata, size: 24),
+                    SizedBox(width: 10),
+                    Text('Continue as Guest'),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 15),
+              SizedBox(
+                width: double.infinity, // Make the button full width
+                child: SignInButton(
+                  Buttons.google,
+                  text: 'Continue with Google',
+                  onPressed: _handleGoogleSignIn,
+                ),
               ),
               const SizedBox(height: 15),
               ElevatedButton(
@@ -148,6 +154,12 @@ class _LoginPageState extends State<LoginPage> {
     try {
       GoogleAuthProvider _googleAuthProvider = GoogleAuthProvider();
       _auth.signInWithProvider(_googleAuthProvider);
+      print('Google user signed');
+      print(_user);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
     } catch (e) {
       print(e);
     }
@@ -159,6 +171,24 @@ class LoginFormPage extends StatelessWidget {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void _login(BuildContext context) async {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Login failed: $e')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -199,12 +229,7 @@ class LoginFormPage extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                );
-              },
+              onPressed: () => _login(context),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
                 foregroundColor: Colors.white,
@@ -215,7 +240,7 @@ class LoginFormPage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Google sign in
+                // Google sign-in logic
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,

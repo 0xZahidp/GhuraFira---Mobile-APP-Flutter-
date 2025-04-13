@@ -38,7 +38,7 @@ class _HotelBookingPageState extends State<HotelBookingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back, color: Colors.white),
+        leading: const BackButton(),
         title: const Text('Hotel'),
         backgroundColor: Colors.blue[900],
         centerTitle: true,

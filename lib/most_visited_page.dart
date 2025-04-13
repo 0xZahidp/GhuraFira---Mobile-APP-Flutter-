@@ -13,42 +13,42 @@ class MostVisitedPage extends StatelessWidget {
       "rating": 4.8,
       "country": "Bangladesh",
       "price": 120,
-      "image": "assets/img_1.png"
+      "image": "assets/images/img_1.png"
     },
     {
       "title": "Lake Fond",
       "rating": 4.9,
       "country": "India",
       "price": 250,
-      "image": "assets/img_2.png"
+      "image": "assets/images/img_2.png"
     },
     {
       "title": "Venice",
       "rating": 4.7,
       "country": "Italy",
       "price": 400,
-      "image": "assets/img_3.png"
+      "image": "assets/images/img_3.png"
     },
     {
       "title": "Saint Martin’s Island",
       "rating": 4.5,
       "country": "Cox’s Bazar",
       "price": 150,
-      "image": "assets/img_4.png"
+      "image": "assets/images/img_4.png"
     },
     {
       "title": "Kangchenjungha",
       "rating": 5.0,
       "country": "India",
       "price": 300,
-      "image": "assets/img_5.png"
+      "image": "assets/images/img_5.png"
     },
     {
       "title": "Sajek Valley",
       "rating": 4.6,
       "country": "Bangladesh",
       "price": 140,
-      "image": "assets/img_1.png"
+      "image": "assets/images/img_1.png"
     },
   ];
 

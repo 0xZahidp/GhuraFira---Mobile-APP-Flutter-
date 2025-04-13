@@ -102,9 +102,9 @@ class _TourPackagePageState extends State<TourPackagePage> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    _popularCard('Kuakata', 'assets/download.jpg'),
+                    _popularCard('Kuakata', 'assets/images/download.jpg'),
                     const SizedBox(width: 10),
-                    _popularCard("Saint Martin's", 'assets/img.png'),
+                    _popularCard("Saint Martin's", 'assets/images/img.png'),
                   ],
                 ),
               ),

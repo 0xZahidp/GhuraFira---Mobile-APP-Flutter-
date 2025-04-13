@@ -184,6 +184,8 @@ class HomePage extends StatelessWidget {
                           'Flight',
                           Icons.flight,
                           Colors.blue,
+                          context,
+                          '/flight',
                         ),
                       ),
                       const SizedBox(width: 16),
@@ -192,6 +194,8 @@ class HomePage extends StatelessWidget {
                           'Hotel',
                           Icons.hotel,
                           Colors.green,
+                          context,
+                          '/hotel',
                         ),
                       ),
                     ],
@@ -380,28 +384,34 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildTrendingOption(String title, IconData icon, Color color) {
-    return Container(
-      height: 100,
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        children: [
-          Icon(icon, size: 30, color: color),
-          const SizedBox(width: 16),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: color,
-            ),
+  Widget _buildTrendingOption(String title, IconData icon, Color color,
+      BuildContext context, String route) {
+    return GestureDetector(
+        onTap: () {
+          Navigator.pop(context);
+          Navigator.pushNamed(context, route);
+        },
+        child: Container(
+          height: 100,
+          decoration: BoxDecoration(
+            color: color.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(12),
           ),
-        ],
-      ),
-    );
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Icon(icon, size: 30, color: color),
+              const SizedBox(width: 16),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: color,
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }

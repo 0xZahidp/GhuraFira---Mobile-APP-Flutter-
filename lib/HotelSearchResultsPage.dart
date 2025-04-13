@@ -13,7 +13,7 @@ class HotelResultsPage extends StatelessWidget {
         "rating": 5.0,
         "price": 7030,
         "oldPrice": 11463,
-        "image": 'assets/img.png',
+        "image": 'assets/images/img.png',
         "tags": ["Outdoor Activities", "Disability Friendly", "Air"],
       },
       {
@@ -22,7 +22,7 @@ class HotelResultsPage extends StatelessWidget {
         "rating": 4.5,
         "price": 5900,
         "oldPrice": 8990,
-        "image": 'assets/img_1.png',
+        "image": 'assets/images/img_1.png',
         "tags": ["Breakfast Included", "Pool", "Sea View"],
         "hasFilter": true,
       },
@@ -32,7 +32,7 @@ class HotelResultsPage extends StatelessWidget {
         "rating": 5.0,
         "price": 9500,
         "oldPrice": 12500,
-        "image": 'assets/img_2.png',
+        "image": 'assets/images/img_2.png',
         "tags": ["Private Beach", "Spa", "Luxury"],
       },
       {
@@ -41,7 +41,7 @@ class HotelResultsPage extends StatelessWidget {
         "rating": 4.2,
         "price": 6200,
         "oldPrice": 8500,
-        "image": 'assets/img_3.png',
+        "image": 'assets/images/img_3.png',
         "tags": ["Free Breakfast", "Gym", "Pool"],
       },
       {
@@ -50,7 +50,7 @@ class HotelResultsPage extends StatelessWidget {
         "rating": 4.7,
         "price": 8000,
         "oldPrice": 11000,
-        "image": 'assets/img_4.png',
+        "image": 'assets/images/img_4.png',
         "tags": ["Sea View", "Premium", "Fine Dining"],
         "hasFilter": true,
       },
@@ -60,7 +60,7 @@ class HotelResultsPage extends StatelessWidget {
         "rating": 4.0,
         "price": 5400,
         "oldPrice": 7900,
-        "image": 'assets/img_5.png',
+        "image": 'assets/images/img_5.png',
         "tags": ["Conference Hall", "Swimming Pool", "Lounge"],
       },
       {
@@ -69,7 +69,7 @@ class HotelResultsPage extends StatelessWidget {
         "rating": 4.3,
         "price": 4800,
         "oldPrice": 7200,
-        "image": 'assets/img_6.png',
+        "image": 'assets/images/img_6.png',
         "tags": ["Smart Rooms", "Restaurant", "Rooftop View"],
       },
       {
@@ -78,7 +78,7 @@ class HotelResultsPage extends StatelessWidget {
         "rating": 3.9,
         "price": 4500,
         "oldPrice": 6000,
-        "image": 'assets/img_7.png',
+        "image": 'assets/images/img_7.png',
         "tags": ["Affordable", "Beach Access", "Friendly Staff"],
       },
     ];
