@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "785976862792",
+    "project_id": "ghura-fira-b7687",
+    "storage_bucket": "ghura-fira-b7687.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785976862792:android:06cc13dfb52111e9d3907d",
+        "android_client_info": {
+          "package_name": "com.ghuraFira.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785976862792-9spvs78lll80vhcmn61uus2mas13ap6a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjWc8BuiKsckrNwT7_o-6NZibNojAECUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785976862792-9spvs78lll80vhcmn61uus2mas13ap6a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "785976862792-golvigf61o7ciigd536c5s1616l2gtjl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ghurafira.app.ghurafira"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785976862792:android:3f7ec35eb71fcbbdd3907d",
+        "android_client_info": {
+          "package_name": "com.ghurafira.app.ghurafira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785976862792-9spvs78lll80vhcmn61uus2mas13ap6a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjWc8BuiKsckrNwT7_o-6NZibNojAECUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785976862792-9spvs78lll80vhcmn61uus2mas13ap6a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "785976862792-golvigf61o7ciigd536c5s1616l2gtjl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ghurafira.app.ghurafira"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
