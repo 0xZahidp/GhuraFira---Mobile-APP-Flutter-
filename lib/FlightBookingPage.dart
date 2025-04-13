@@ -53,9 +53,9 @@ class _FlightBookingPageState extends State<FlightBookingPage>
     }
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F8FA),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.orange[300],
+        backgroundColor: Colors.blue[900],
         title: const Text('Flight Booking'),
         centerTitle: true,
         elevation: 1,
@@ -101,7 +101,7 @@ class _FlightBookingPageState extends State<FlightBookingPage>
               Center(
                 child: ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange.shade500,
+                    backgroundColor: Colors.blue.shade500,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 48, vertical: 14),
                     shape: RoundedRectangleBorder(
@@ -154,17 +154,17 @@ class _FlightBookingPageState extends State<FlightBookingPage>
         duration: const Duration(milliseconds: 300),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: selected ? Colors.orange[100] : Colors.grey[200],
+          color: selected ? Colors.blue[100] : Colors.grey[200],
           borderRadius: BorderRadius.circular(30),
           border: selected
-              ? Border.all(color: Colors.orange.shade700, width: 2)
+              ? Border.all(color: Colors.blue.shade700, width: 2)
               : null,
         ),
         child: Text(
           label,
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            color: selected ? Colors.orange.shade800 : Colors.black87,
+            color: selected ? Colors.blue.shade800 : Colors.black87,
           ),
         ),
       ),
