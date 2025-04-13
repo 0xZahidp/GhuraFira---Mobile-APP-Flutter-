@@ -1,14 +1,36 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sign_in_button/sign_in_button.dart';
 import 'homepage.dart';
 import 'signup.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  User? _user;
+
+  @override
+  void initState() {
+    super.initState();
+    _auth.authStateChanges().listen((event) {
+      setState(() {
+        _user = event;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView( // Add this to make the page scrollable
+      body: SingleChildScrollView(
+        // Add this to make the page scrollable
         padding: const EdgeInsets.all(20.0),
         child: ConstrainedBox(
           constraints: BoxConstraints(
@@ -19,10 +41,12 @@ class LoginPage extends StatelessWidget {
             children: [
               // Make image responsive
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.7, // 70% of screen width
+                width: MediaQuery.of(context).size.width *
+                    0.7, // 70% of screen width
                 child: AspectRatio(
                   aspectRatio: 1, // Keep it square
-                  child: Image.asset('assets/images/logo_login.png', fit: BoxFit.contain),
+                  child: Image.asset('assets/images/logo_login.png',
+                      fit: BoxFit.contain),
                 ),
               ),
               const SizedBox(height: 20),
@@ -50,31 +74,34 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: () {
-                  // Google sign in logic
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.black,
-                  minimumSize: const Size(double.infinity, 50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    side: const BorderSide(color: Colors.grey),
-                  ),
-                ),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.g_mobiledata, size: 24),
-                    SizedBox(width: 10),
-                    Text('Continue with Google'),
-                  ],
-                ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     // Google sign in logic
+              //     Navigator.pushReplacement(
+              //       context,
+              //       MaterialPageRoute(builder: (context) => HomePage()),
+              //     );
+              //   },
+              //   style: ElevatedButton.styleFrom(
+              //     backgroundColor: Colors.white,
+              //     foregroundColor: Colors.black,
+              //     minimumSize: const Size(double.infinity, 50),
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(8),
+              //       side: const BorderSide(color: Colors.grey),
+              //     ),
+              //   ),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+
+              //     ],
+              //   ),
+              // ),
+              SignInButton(
+                Buttons.google,
+                text: 'Continue with Google',
+                onPressed: _handleGoogleSignIn,
               ),
               const SizedBox(height: 15),
               ElevatedButton(
@@ -116,6 +143,15 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+
+  void _handleGoogleSignIn() {
+    try {
+      GoogleAuthProvider _googleAuthProvider = GoogleAuthProvider();
+      _auth.signInWithProvider(_googleAuthProvider);
+    } catch (e) {
+      print(e);
+    }
+  }
 }
 
 class LoginFormPage extends StatelessWidget {
@@ -130,7 +166,8 @@ class LoginFormPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Login'),
       ),
-      body: SingleChildScrollView( // Add this to make the page scrollable
+      body: SingleChildScrollView(
+        // Add this to make the page scrollable
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
