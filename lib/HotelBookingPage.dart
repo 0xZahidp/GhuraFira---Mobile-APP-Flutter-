@@ -134,7 +134,7 @@ class _HotelBookingPageState extends State<HotelBookingPage> {
 
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => HotelResultsPage()),
+      MaterialPageRoute(builder: (context) => HotelResultsPage(fromCity: 'dhaka',)),
     );
   }
 

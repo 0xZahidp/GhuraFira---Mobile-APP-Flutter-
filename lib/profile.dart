@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'homepage.dart';
 import 'bookings.dart';
 import 'offers.dart';
@@ -6,7 +7,11 @@ import 'inbox.dart';
 import 'login.dart'; // Assuming you have a login page for logout functionality
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  User? _user;
+
+  ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +30,24 @@ class ProfilePage extends StatelessWidget {
               // User Info Section
               Row(
                 children: [
-                  const CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Colors.grey,
-                    child: Icon(Icons.person, size: 30, color: Colors.white),
+                  // const CircleAvatar(
+                  //   radius: 30,
+                  //   backgroundColor: Colors.grey,
+                  //   child: Icon(Icons.person, size: 30, color: Colors.white),
+                  // ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(image: DecorationImage(image: NetworkImage(_user!.photoURL!)))
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
@@ -42,9 +61,9 @@ class ProfilePage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        SizedBox(height: 4),
                         Text(
-                          'mdzahidhasanpatwary@gmail.com',
+                          _user!.email!,
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey.shade600,
